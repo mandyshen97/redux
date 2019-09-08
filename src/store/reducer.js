@@ -6,7 +6,7 @@ const defaultState = {
 } // 默认数据
 
 /**
- * 暴露出去一个方法函数,有两个参数：state 和 action。
+ * reducer暴露出去一个方法函数,有两个参数：state 和 action。
  * state: 是整个项目中需要管理的数据信息。
  */
 
