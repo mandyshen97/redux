@@ -1,3 +1,4 @@
+# react项目配置及redux使用流程（详细记录）
 ## react项目创建及配置
 ### 首先创建react项目：
 ```shell
@@ -178,7 +179,8 @@ export const getListAction = (data) => ({
 
 // ...
 ```
-下面通过`button`的点击事件来熟悉redux流程。
+## 下面通过`button`的点击事件来熟悉redux流程。
+### 组件：
 ```javascript
 import React, { Component } from 'redux'
 import { addItemAction } from '.././store/actionCreators'
@@ -207,6 +209,7 @@ class List extends Component {
   }
 }
 ```
+### store/index.js，整个项目的store文件：
 ```javascript
 // store/index.js
 import { createStore } from 'redux' // 引入 createStore方法
@@ -217,6 +220,7 @@ const store = createStore(
 ) // 创建数据存储仓库
 export default store // 将仓库暴露出去
 ```
+### store/reducer.js：
 ```javascript
 // store/reducer.js
 import { ADD_ITEM } from './actionTypes'
@@ -236,10 +240,12 @@ export default (state = defaultState, action) => {
   return state
 }
 ```
+### store/actionTypes.js：
 ```javascript
 // store/actionTypes.js
 export const ADD_ITEM = 'addItem'
 ```
+### store/actionCreators.js：
 ```javascript
 // store/actionCreators.js
 import { ADD_ITEM } from './actionTypes'
