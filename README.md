@@ -68,7 +68,7 @@ module.exports = override(
 )
 ```
 ## redux的使用
-![redux_flow.png]('./static/imgs/redux_flow.png')
+![redux_flow.png](./static/imgs/redux_flow.png)
 
 安装redux:
 ```shell
