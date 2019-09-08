@@ -68,6 +68,9 @@ module.exports = override(
   })
 )
 ```
+<hr/>
+<hr/>
+
 ## redux的使用
 ![redux_flow.png](./static/imgs/redux_flow.png)
 
