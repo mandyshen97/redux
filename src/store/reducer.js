@@ -1,12 +1,8 @@
-import {CHANGE_INPUT, ADD_ITEM, DELETE_ITEM} from './actionTypes'
+import {CHANGE_INPUT, ADD_ITEM, DELETE_ITEM, GET_LIST} from './actionTypes'
 
 const defaultState = {
   inputValue: 'Write Something',
-  list: [
-    '第一件事',
-    '第二件事',
-    '第三件事',
-  ]
+  list: []
 } // 默认数据
 
 /**
@@ -19,7 +15,6 @@ const defaultState = {
  * 其实不然，Reudcer只是返回了更改的数据，但是并没有更改store中的数据，store拿到了Reducer的数据，自己对自己进行了更新。
  */
 export default (state = defaultState, action) => {
-  console.log(state, action)
   if (action.type === CHANGE_INPUT) {
     let newState = JSON.parse(JSON.stringify(state)) // 深度拷贝state
     newState.inputValue = action.value
@@ -36,5 +31,12 @@ export default (state = defaultState, action) => {
     newState.list.splice(action.index, 1) // 删除数组中对应的值
     return newState
   }
+  if(action.type === GET_LIST){
+    let newState = JSON.parse(JSON.stringify(state))
+    newState.list = action.data.data.list // 复制新的list数组进去
+    console.log(newState)
+    return newState
+  }
+  console.log(state)
   return state
 }

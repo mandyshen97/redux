@@ -1,18 +1,33 @@
 import React, { Component } from 'react';
 import { Button, Input, List } from 'antd'
+import axios from 'axios'
 import store from '../store/index' // 在组件中引入store
-import { changeInputAction, addItemAction, deleteItemAction } from '../store/actionCreators'
+import { 
+  changeInputAction, 
+  addItemAction, 
+  deleteItemAction, 
+  getListAction 
+} from '../store/actionCreators'
+
 class TodoList extends Component {
   constructor(props) {
     super(props);
-    console.log(store)
     this.state = store.getState() // 从store中获取state数据
     store.subscribe(this.storeChange) // 订阅Redux的状态
   }
 
   storeChange = () => {
     this.setState(store.getState())
-    
+  }
+
+  componentDidMount(){
+    // 获取远程接口数据
+    axios.get('https://www.easy-mock.com/mock/5d74ebc59b07047ee5315081/example/redux/va/list')
+    .then((res)=>{
+      const data = res.data
+      const action = getListAction(data)
+      store.dispatch(action)
+    })
   }
 
   changeInputValue = (e) => {
